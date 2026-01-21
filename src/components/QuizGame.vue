@@ -127,6 +127,7 @@ watch(() => props.num1, () => {
       <NumberKeypad
         v-model="userAnswer"
         :disabled="showResult"
+        :show-result="showResult"
         @submit="handleSubmit"
       />
     </div>
@@ -153,15 +154,6 @@ watch(() => props.num1, () => {
           : 'bg-gradient-to-r from-green-400 to-cyan-500 text-white shadow-lg hover:shadow-xl'"
       >
         {{ showResult ? '➡️ Lanjut' : '✓ Cek' }}
-      </button>
-
-      <button
-        v-if="showKeypad && showResult"
-        @click="handleSubmit"
-        class="px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 transform hover:scale-105
-               bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl"
-      >
-        ➡️ Soal Berikutnya
       </button>
       
       <button

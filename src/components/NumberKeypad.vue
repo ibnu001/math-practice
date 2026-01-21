@@ -2,10 +2,12 @@
 interface Props {
   modelValue: string
   disabled?: boolean
+  showResult?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  disabled: false
+  disabled: false,
+  showResult: false
 })
 
 const emit = defineEmits<{
@@ -29,7 +31,6 @@ const handleClear = (): void => {
 }
 
 const handleSubmit = (): void => {
-  if (props.disabled) return
   emit('submit')
 }
 </script>
@@ -95,12 +96,12 @@ const handleSubmit = (): void => {
       </button>
       <button
         @click="handleSubmit"
-        :disabled="disabled"
-        class="h-12 rounded-xl bg-green-500/50 text-green-200 font-bold 
-               hover:bg-green-500/70 active:bg-green-500/90 transition-all duration-150
-               disabled:opacity-50 disabled:cursor-not-allowed"
+        class="h-12 rounded-xl font-bold transition-all duration-150"
+        :class="showResult 
+          ? 'bg-blue-500/50 text-blue-200 hover:bg-blue-500/70 active:bg-blue-500/90'
+          : 'bg-green-500/50 text-green-200 hover:bg-green-500/70 active:bg-green-500/90'"
       >
-        ✓ Cek
+        {{ showResult ? '➡️ Lanjut' : '✓ Cek' }}
       </button>
     </div>
   </div>
