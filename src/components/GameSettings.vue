@@ -84,7 +84,7 @@ const startGame = (): void => {
     <!-- Digit Level Selection -->
     <div class="mb-8">
       <h3 class="text-lg font-semibold text-white/90 mb-4">Pilih Level Digit</h3>
-      <div class="flex gap-3">
+      <div class="flex flex-wrap gap-3">
         <button
           v-for="level in digitLevels"
           :key="level.value"
